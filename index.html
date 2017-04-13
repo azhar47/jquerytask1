@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>JQuery Task-1 || CTG-52</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!--All CSS Start Here -->
+        <link href="css/bootstrap.css" rel="stylesheet" type="text/css"/>
+        <link href="css/style.css" rel="stylesheet" type="text/css"/>
+        <link href="http://markimarta.com/wp-content/uploads/2016/08/jquery-logo1.png" rel="icon" type="images/png"/>
+    </head>
+    <body>
+        <div class="container">
+
+            <div class="row">
+                <div class="col-sm-12 text-center jumbotron">
+                    <h2>Background-Color Change</h2>
+                    <div class="btn-group">
+                        <button class="btn btn-default btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            BG-Change
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li> <a class="btn  white">White</a> </li>
+                            <li> <a  class="btn  black">Black</a></li>
+                            <li> <a  class="btn   red">Red</a></li>
+                            <li><a  class="btn  green">Green</a> </li>
+                            <li> <a class="btn  blue">Blue</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-12 text-center">
+                    <h3>Images for Gallery</h3>
+                    <ul class="list-unstyled list-inline">
+                        <li class="btn btn-danger all">All Demo</li>
+                        <li class="btn btn-info psd" >PSD</li>
+                        <li class="btn btn-success url" >HTML</li>
+                        <li class="btn btn-warning php" >Wordpress</li>
+                    </ul>
+                </div>
+                <div class="col-sm-4 psd thumbnail">
+                    <img src="img/img1.jpg" class="image-responive" alt=""/>
+                </div>
+                <div class="col-sm-4 php thumbnail">
+                    <img src="img/img2.jpg" class="image-responive" alt=""/>
+                </div>
+                <div class="col-sm-4 psd thumbnail">
+                    <img src="img/img3.jpg" class="image-responive" alt=""/>
+                </div>
+                <div class="col-sm-4 url thumbnail">
+                    <img src="img/img4.jpg" class="image-responive" alt=""/>
+                </div>
+                <div class="col-sm-4 php thumbnail">
+                    <img src="img/img5.jpg" class="image-responive" alt=""/>
+                </div>
+                <div class="col-sm-4 url thumbnail">
+                    <img src="img/img6.jpg" class="image-responive" alt=""/>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-6 jumbotron">
+                    <h2>Signup Form (Password length)</h2>
+                    <form>
+                        <div class="form-group">
+                            <input type="text" name="fname" class="form-control" placeholder="Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" name="email" class="mail form-control" placeholder="Email" required>
+                            <span class="ml"></span>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" name="password" class="form-control"  placeholder="Password" required>
+                            <span class="pwd"></span>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" name="submite" value="Login" class="btn btn-danger">
+                        </div>
+                    </form>
+
+                </div>
+                <div class="col-sm-6 text-center">
+
+                    <h3 class="text-danger text-center">TextArea(Challenge -> You can type only 15 character !!) </h3>
+                    <textarea rows="5" cols="40"></textarea>
+                    <p class="showmsg"></p>
+
+
+                </div>
+            </div>
+
+
+
+        </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script>
+//JQ for Background-Color Change
+            $(document).ready(function ()
+            {
+                $(".white").click(function () {
+                    $("body").css("background", "white");
+
+                });
+                $(".black").click(function () {
+                    $("body").css("background", "black");
+
+                });
+                $(".red").click(function () {
+                    $("body").css("background", "red");
+
+                });
+                $(".green").click(function () {
+                    $("body").css("background", "green");
+
+                });
+                $(".blue").click(function () {
+                    $("body").css("background", "blue");
+
+                });
+
+            });
+
+
+
+
+            //JQ for TextArea ...
+            $(document).ready(function () {
+                var i = 15;
+                var msg = " Char You have Remaining";
+                $("textarea").keyup(function () {
+                    var tx = $("textarea").val();
+                    var str = i - tx.length;
+
+                    if (str >= 0) {
+                        $(".showmsg").css("color", "red");
+                        $(".showmsg").css("font-size", "17px");
+                        $(".showmsg").text(str + msg);
+                        $("textarea").attr("maxlength", "15");
+
+
+
+                    }
+
+                });
+            });
+
+
+            //JQ for image gallery
+            $(document).ready(function () {
+                $("ul li.all").click(function () {
+                    $("div.psd").fadeIn(2000);
+                    $("div.url").fadeIn(2000);
+                    $("div.php").fadeIn(1000);
+
+                });
+                $("ul li.psd").click(function () {
+                    $("div.psd").fadeIn(1000);
+                    $("div.url").fadeOut(1000);
+                    $("div.php").fadeOut(100);
+
+                });
+                $("ul li.url").click(function () {
+                    $("div.psd").fadeOut(1000);
+                    $("div.url").fadeIn(1000);
+                    $("div.php").fadeOut(100);
+
+                });
+                $("ul li.php").click(function () {
+                    $("div.psd").fadeOut(1000);
+                    $("div.url").fadeOut(1000);
+                    $("div.php").fadeIn(1000);
+
+                });
+
+
+            });
+
+            $("input:password").keyup(
+                    function () {
+                        var pw = $("input:password").val().length;
+                        if (pw >= 2 && pw <= 4) {
+                            $("span.pwd").css("color", "red");
+                            $("span.pwd").html("<b>Weak</b>");
+
+                        } else if (pw >= 4 && pw <= 7) {
+                            $("span.pwd").css("color", "green");
+                            $("span.pwd").html("<b>Medium</b>");
+
+                        } else if (pw >= 8 && pw <= 10) {
+                            $("span.pwd").css("color", "blue");
+                            $("span.pwd").html("<b>Strong</b>");
+
+                        } else if (pw >= 11 && pw <= 15) {
+                            $("span.pwd").css("color", "Seagreen");
+                            $("span.pwd").html("<b>Very Strong</b>");
+
+                        }
+                    });
+
+        </script>
+    </body>
+</html>
